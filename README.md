@@ -16,7 +16,7 @@ Here is the stuff used:
 
 - Create a database
 
-We'll need a database, im using Xampp for Windows, it's easier to create one. It has phpMyAdmin wich allows us
+We'll need a database, im using Xampp for Windows, it's easier to create one. It has phpMyAdmin wich allows
 to create a database from localhost/phpmyadmin. (Probably you've done this a thousend times, I know).
 So, database name: phytoncrud; and then create the columns as follows:
 
