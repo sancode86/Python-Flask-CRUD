@@ -10,18 +10,28 @@
 <body>
     <div class="centrar">
 
-        <form action="/crear" method="post" class="text-center">   
+        <form action="/guardar" method="post"enctype="multipart/form-data" >   
             
-            <input                   
-            name="Nombre"
+            <input       
+            type="text"            
+            name="nombre"
             placeholder="Nombre"
+            id="nombre"
             />    
             
             <input        
-            type="email"
+            type="text"
             name="email"
             placeholder="E-mail"
+            id="email"
             />
+
+            <input        
+            type="file"
+            name="foto"
+            id="foto"
+            />
+
             <button type="submit">
                 Aceptar
             </button>  
