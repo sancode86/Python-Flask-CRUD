@@ -20,8 +20,16 @@ def index():
     cursor.execute(sql)
     conn.commit()
 
-
     return render_template('personas/index.html')
+
+
+@app.route('/crear')
+def crear():  
+    return render_template('personas/crear.html')    
+
+@app.route('/editar')
+def editar():  
+    return render_template('personas/editar.html')        
 
 if __name__ == '__main__':
     app.run(debug=True)    

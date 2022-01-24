@@ -1,6 +1,6 @@
 # Phyton 🐍 | Flask 🧪 | MySQL 💻
 
-
+Super simple setup to get started using Phyton & Flask.
 
 
 BORRARRRRRRRR
@@ -9,6 +9,9 @@ https://www.youtube.com/watch?v=gUED5uFmyQI&ab_channel=Develoteca
 
 
 ## Setup
+
+Here is the stuff used:
+
 - We need Phyton installed, you can get it from Windows Store, or from official site.
 
 - Create a database
@@ -45,9 +48,9 @@ pip list
 - Change connection settings if necesary:
 ```
 mysql = MySQL()
-app.config['MySQL_DATABASE_HOST'] = 'localhost'
-app.config['MySQL_DATABASE_USER'] = 'root'
-app.config['MySQL_DATABASE_PASSWORD'] = ''
-app.config['MySQL_DATABASE_DB'] = 'personas'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = ''
+app.config['MYSQL_DATABASE_DB'] = 'personas'
 mysql.init_app(app)
 ```
