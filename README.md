@@ -41,3 +41,13 @@ pip install jinja2
 ```
 pip list
 ```
+
+- Change connection settings if necesary:
+```
+mysql = MySQL()
+app.config['MySQL_DATABASE_HOST'] = 'localhost'
+app.config['MySQL_DATABASE_USER'] = 'root'
+app.config['MySQL_DATABASE_PASSWORD'] = ''
+app.config['MySQL_DATABASE_DB'] = 'personas'
+mysql.init_app(app)
+```

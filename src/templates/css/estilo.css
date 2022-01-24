@@ -1,0 +1,12 @@
+.centrar{
+    text-align: center;
+    align-content: center; 
+    max-width: 800px;
+    margin: auto;
+    border-radius: 10px;
+    border: 1px solid grey;
+    background-color: aliceblue;   
+}
+html, body{
+    background-color: red;
+}
