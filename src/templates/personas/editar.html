@@ -4,47 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/estilo.css') }}">
     <title>Editar</title>
 </head>
 <body>
-    <h1>Editar</h1>
-    <a href="/">Volver</a>
-    {% for personas in personas %}
+    <div class="centrar">           
+            
+            <img class="imagenLogo" src="/uploads/logo.png">
+            <br>
+            <a class="boton" href="/">Volver</a>
+            <br>
+            {% for personas in personas %}
 
-    <form action="/actualizar" method="post"enctype="multipart/form-data" >   
-        <img src="{{ url_for('uploads', nombreFoto = personas[3]) }}"> 
-        <br>
-        <input       
-        type="text"            
-        name="nombre"
-        placeholder="Nombre"
-        id="nombre"
-        value="{{personas[1]}}"
-        />    
-        
-        <input        
-        type="text"
-        name="email"
-        placeholder="E-mail"
-        id="email"
-        value="{{personas[2]}}"
-        />
-        <input        
-        type="file"
-        name="imagen"
-        id="imagen"
-        />       
-
-        <button type="submit">
-            Aceptar
-        </button>  
-        
-        
-    </form>
-
-
-
-    {% endfor %}
-
+            <form action="/actualizar" method="post"enctype="multipart/form-data" >   
+                <img class="avatar" src="{{ url_for('uploads', nombreFoto = personas[3]) }}"> 
+                <br>
+                <input       
+                type="text"            
+                name="nombre"
+                placeholder="Nombre"
+                id="nombre"
+                value="{{personas[1]}}"
+                />    
+                <br>
+                <input        
+                type="text"
+                name="email"
+                placeholder="E-mail"
+                id="email"
+                value="{{personas[2]}}"
+                />
+                <br>
+                <label class="boton">
+                    <input        
+                    type="file"
+                    name="imagen"
+                    id="imagen"
+                    />  
+                    Subir Imágen
+                </label>
+                  
+                <br>
+                <button class="boton" type="submit">
+                    Aceptar
+                </button>               
+                
+            </form>
+            {% endfor %}
+</div>
 </body>
 </html>
