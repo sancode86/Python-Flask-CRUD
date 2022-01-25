@@ -22,26 +22,22 @@ def uploads(nombreFoto):
     return send_from_directory(app.config['CARPETA'], nombreFoto)
 
 @app.route('/')
-def index():
-    
+def index():    
     sql = "SELECT * FROM `personas`;"
     conn = mysql.connect()
     cursor= conn.cursor()
     cursor.execute(sql)
     personas=cursor.fetchall()  
     conn.commit()
-
     return render_template('personas/index.html', personas=personas)
 
 @app.route('/borrar/<int:id>')
 def borrar(id):  
     conn = mysql.connect()
     cursor= conn.cursor()
-
     cursor.execute("SELECT imagen FROM personas WHERE id=%s", id)
     fila=cursor.fetchall()
-    os.remove(os.path.join(app.config['CARPETA'], fila[0][0]))
-    
+    os.remove(os.path.join(app.config['CARPETA'], fila[0][0]))    
     cursor.execute("DELETE FROM personas WHERE id=%s", (id))
     conn.commit()
     return redirect('/')
@@ -65,7 +61,6 @@ def actualizar():
     _email=request.form['email']
     _foto=request.files['foto']
     id=request.form['id']
-
     sql = "UPDATE personas SET nombre=%s, email=%s WHERE id=%s;"    
     datos=(_nombre, _email, id)
     conn = mysql.connect()

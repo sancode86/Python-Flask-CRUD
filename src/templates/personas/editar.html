@@ -15,7 +15,6 @@
             <a class="boton" href="/">Volver</a>
             <br>
             {% for personas in personas %}
-
             <form action="/actualizar" method="post"enctype="multipart/form-data" >   
                 <img class="avatar" src="{{ url_for('uploads', nombreFoto = personas[3]) }}"> 
                 <br>
@@ -42,13 +41,11 @@
                     id="imagen"
                     />  
                     Subir Imágen
-                </label>
-                  
+                </label>                  
                 <br>
                 <button class="boton" type="submit">
                     Aceptar
-                </button>               
-                
+                </button> 
             </form>
             {% endfor %}
 </div>

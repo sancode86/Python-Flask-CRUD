@@ -1,27 +1,17 @@
 # Python 🐍 | Flask 🧪 | MySQL 💻
 
-Super simple setup to get started using python & Flask.
+Super simple setup to get started using Python & Flask.
 
-
-BORRARRRRRRRR
-https://www.youtube.com/watch?v=gUED5uFmyQI&ab_channel=Develoteca
-
-
+## Screenshots
+![Python](imgs/screen.png)
+![Python](imgs/screen2.png)
 
 ## Setup
 
-Here is the stuff used:
-
-- We need Python installed, you can get it from Windows Store, or from official site.
-
-- Create a database
-
-We'll need a database, im using Xampp for Windows, it's easier to create one. It has phpMyAdmin wich allows
-to create a database from localhost/phpmyadmin. (Probably you've done this a thousend times, I know).
+We'll need a database, I'm using Xampp for Windows, it's easier to create one. It has phpMyAdminwhich allows to create a database from localhost/phpmyadmin. (Probably you've done this a thousand times, I know).
 So, database name: pythoncrud; and then create the columns as follows:
 
 ![database](imgs/1.png)
-
 
 
 - Install Flask from terminal:
@@ -45,7 +35,7 @@ pip install jinja2
 pip list
 ```
 
-- Change connection settings if necesary:
+- Change connection settings if necessary:
 ```
 mysql = MySQL()
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
@@ -59,3 +49,5 @@ mysql.init_app(app)
 ```
 python app.py
 ```
+
+Best wishes to you! 🤗

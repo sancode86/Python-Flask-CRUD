@@ -9,34 +9,36 @@
 </head>
 <body>
     <div class="centrar">
-        <a href="/">Volver</a>
-        <form action="/guardar" method="post"enctype="multipart/form-data" >   
-            
+        <img class="imagenLogo" src="/uploads/logo.png">
+        <br>
+        <a href="/" class="boton">Volver</a>
+        <form action="/guardar" method="post"enctype="multipart/form-data" >              
             <input       
             type="text"            
             name="nombre"
             placeholder="Nombre"
             id="nombre"
             />    
-            
+            <br>
             <input        
             type="text"
             name="email"
             placeholder="E-mail"
             id="email"
             />
-
-            <input        
-            type="file"
-            name="imagen"
-            id="imagen"
-            />
-
-            <button type="submit">
+            <br>
+            <label class="boton">
+                <input        
+                type="file"
+                name="imagen"
+                id="imagen"
+                />  
+                Subir Imágen
+            </label>
+            <br>
+            <button class="boton" type="submit">
                 Aceptar
             </button>  
-            
-            
         </form>
     </div>
     </body>

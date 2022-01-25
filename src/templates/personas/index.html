@@ -4,27 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/estilo.css') }}">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='css/estilo.css') }}"
+    />
     <title>Home</title>
-    <style>
-     
-    </style>
+    <style></style>
   </head>
   <body>
     <div class="centrar">
-      <img class="imagenLogo" src="/uploads/logo.png">
-      <br>
-      <a class="boton" href="/crear">Crear</a> 
-      <br>   
-      {% for personas in personas %}
-      <div class="tarjeta">
-        <img class="avatar" src="uploads/{{personas[3] }}">
-        <p>{{personas[1]}}</p>
-        <p>{{personas[2]}}</p>
-        <a class="boton" href="/borrar/{{personas[0]}}">Eliminar</a>
-        <a class="boton" href="/editar/{{personas[0]}}">Editar</a>
+      <img class="imagenLogo" src="/uploads/logo.png" />
+      <br />
+      <a class="boton" href="/crear">Crear</a>
+      <br />
+      <div class="contenedor">
+        {% for personas in personas %}
+        <div class="tarjeta">
+          <img class="avatar" src="uploads/{{personas[3] }}" />
+          <p>{{personas[1]}}</p>
+          <p>{{personas[2]}}</p>
+          <a class="boton" href="/borrar/{{personas[0]}}">Eliminar</a>
+          <a class="boton" href="/editar/{{personas[0]}}">Editar</a>
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
     </div>
   </body>
 </html>
