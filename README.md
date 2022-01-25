@@ -1,6 +1,6 @@
-# Phyton 🐍 | Flask 🧪 | MySQL 💻
+# Python 🐍 | Flask 🧪 | MySQL 💻
 
-Super simple setup to get started using Phyton & Flask.
+Super simple setup to get started using python & Flask.
 
 
 BORRARRRRRRRR
@@ -12,13 +12,13 @@ https://www.youtube.com/watch?v=gUED5uFmyQI&ab_channel=Develoteca
 
 Here is the stuff used:
 
-- We need Phyton installed, you can get it from Windows Store, or from official site.
+- We need Python installed, you can get it from Windows Store, or from official site.
 
 - Create a database
 
 We'll need a database, im using Xampp for Windows, it's easier to create one. It has phpMyAdmin wich allows
 to create a database from localhost/phpmyadmin. (Probably you've done this a thousend times, I know).
-So, database name: phytoncrud; and then create the columns as follows:
+So, database name: pythoncrud; and then create the columns as follows:
 
 ![database](imgs/1.png)
 
@@ -53,4 +53,9 @@ app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = ''
 app.config['MYSQL_DATABASE_DB'] = 'personas'
 mysql.init_app(app)
+```
+
+- Run the app:
+```
+python app.py
 ```

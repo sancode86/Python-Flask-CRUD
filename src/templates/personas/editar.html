@@ -8,11 +8,12 @@
 </head>
 <body>
     <h1>Editar</h1>
-
+    <a href="/">Volver</a>
     {% for personas in personas %}
 
     <form action="/actualizar" method="post"enctype="multipart/form-data" >   
-        <p id="id">{{personas[0]}}</p>    
+        <img src="{{ url_for('uploads', nombreFoto = personas[3]) }}"> 
+        <br>
         <input       
         type="text"            
         name="nombre"
@@ -30,8 +31,8 @@
         />
         <input        
         type="file"
-        name="foto"
-        id="foto"
+        name="imagen"
+        id="imagen"
         />       
 
         <button type="submit">

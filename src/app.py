@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template, request,redirect
+from flask import render_template, request,redirect,url_for
 from flaskext.mysql import MySQL
 from flask import send_from_directory
 from datetime import datetime
@@ -11,13 +11,13 @@ mysql = MySQL()
 app.config['MYSQL_DATABASE_HOST']= 'localhost'
 app.config['MYSQL_DATABASE_USER']= 'root'
 app.config['MYSQL_DATABASE_PASSWORD']= ''
-app.config['MYSQL_DATABASE_DB']= 'phytoncrud'
+app.config['MYSQL_DATABASE_DB']= 'pythoncrud'
 mysql.init_app(app)
 
 CARPETA = os.path.join('uploads')
 app.config['CARPETA']=CARPETA
 
-@app.route('/uploads/nombreFoto')
+@app.route('/uploads/<nombreFoto>')
 def uploads(nombreFoto):
     return send_from_directory(app.config['CARPETA'], nombreFoto)
 
@@ -38,7 +38,7 @@ def borrar(id):
     conn = mysql.connect()
     cursor= conn.cursor()
 
-    cursor.execute("SELECT foto FROM personas WHERE id=%s", id)
+    cursor.execute("SELECT imagen FROM personas WHERE id=%s", id)
     fila=cursor.fetchall()
     os.remove(os.path.join(app.config['CARPETA'], fila[0][0]))
     
@@ -57,9 +57,7 @@ def editar(id):
     cursor.execute("SELECT * FROM personas where id=%s", (id))
     personas=cursor.fetchall()  
     conn.commit()
-    return render_template('personas/editar.html', personas=personas)        
-
-
+    return render_template('personas/editar.html', personas=personas) 
 
 @app.route('/actualizar', methods=['POST'])
 def actualizar():
@@ -68,61 +66,40 @@ def actualizar():
     _foto=request.files['foto']
     id=request.form['id']
 
-    sql = "UPDATE personas SET nombre=%s, email=%s WHERE id=%s;"
-    
+    sql = "UPDATE personas SET nombre=%s, email=%s WHERE id=%s;"    
     datos=(_nombre, _email, id)
-
     conn = mysql.connect()
-    cursor= conn.cursor()
-    
+    cursor= conn.cursor()    
     now = datetime.now()
-    tiempo = now.strftime("%Y%H%M%S")
-    
+    tiempo = now.strftime("%Y%H%M%S")    
     if _foto.filename != '':
         nuevoNombreFoto = tiempo+_foto.filename
         _foto.save("uploads/" + nuevoNombreFoto)
-
         cursor.execute("SELECT foto FROM personas WHERE id=%s", id)
         fila=cursor.fetchall()
-
         os.remove(os.path.join(app.config['CARPETA'], fila[0][0]))
-
         cursor.execute("UPDATE personas SET foto%s WHERE id%s",(nuevoNombreFoto, id))
         conn.commit() 
     cursor.execute(sql, datos)
     conn.commit() 
-
     return redirect('/')
-
-
-
-
 
 @app.route('/guardar', methods=['POST'])
 def guardar(): 
-
     _nombre=request.form['nombre']
     _email=request.form['email']
-    _foto=request.files['foto']
-
+    _foto=request.files['imagen']
     now = datetime.now()
     tiempo = now.strftime("%Y%H%M%S")
-
     if _foto.filename != '':
         nuevoNombreFoto = tiempo+_foto.filename
         _foto.save("uploads/" + nuevoNombreFoto)
-
-    sql = "INSERT INTO `personas` (`id`, `nombre`, `email`, `imagen`) VALUES (NULL, %s, %s, %s);"
-    
+    sql = "INSERT INTO `personas` (`id`, `nombre`, `email`, `imagen`) VALUES (NULL, %s, %s, %s);"    
     datos=(_nombre, _email, nuevoNombreFoto)
-
     conn = mysql.connect()
     cursor= conn.cursor()
     cursor.execute(sql, datos)
     conn.commit() 
-    return render_template('personas/index.html')        
-
-
-
+    return redirect('/')
 if __name__ == '__main__':
     app.run(debug=True)    
